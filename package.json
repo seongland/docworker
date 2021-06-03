@@ -7,7 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write '**/*.{js,css,json,md}'",
-    "release": "wrangler publish"
+    "production": "wrangler publish --env production",
+    "dev": "wrangler publish --env development"
   },
   "author": "seonglae <sungle3737@gmail.com>",
   "devDependencies": {

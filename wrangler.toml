@@ -1,4 +1,11 @@
 account_id = "b709a5422126605a7ae7dfc3e6237505"
 name = "worker"
-route = "http://doc.seonglae.com/*"
 type = "javascript"
+workers_dev = true
+zone_id = "seongland"
+
+[env.production]
+route = "http://doc.seonglae.com/*"
+
+[env.development]
+route = "http://doc.seonglae.com/*"
