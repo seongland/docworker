@@ -1,7 +1,7 @@
 /* CONFIGURATION STARTS HERE */
 
 /* Step 1: Domain name */
-const MY_DOMAIN = 'doc.seonglae.com'
+const MY_DOMAIN = 'doc.seongland.com'
 
 /*
  * Step 2: enter your URL slug to page ID mapping
