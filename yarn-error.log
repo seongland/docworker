@@ -1,0 +1,51 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\Seonglae\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js publish
+
+PATH: 
+  C;C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C;C:\Program Files\LAStools\bin;C;C:\Perl64\bin;C;C:\Program Files\vsyasm;C;C:\Program Files\Geth;C;C:\tools\flutter\bin;C;C:\tools\dart-sdk\bin;C;C:\Program Files\cloudflare;C;C:\Program Files\nodejs;C;C:\Program Files\Geth;C;C:\Program Files\filebrowser;C;C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;C;C:\Home\Usage\Prog\Work\protoc\bin;C;C:\Program Files (x86)\Subversion\bin;C;C:\Users\Seonglae\AppData\Local\Google\Cloud SDK\google-cloud-sdk\bin;C;C:\Users\Seonglae\AppData\Local\Yarn\Data\global\bin;C:\Users\Seonglae\bin;C:\Program Files\git\mingw64\bin;C:\Program Files\git\usr\local\bin;C:\Program Files\git\usr\bin;C:\Program Files\git\usr\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Perl64\bin;C:\Users\Seonglae\AppData\Roaming\ActiveState\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\libnvvp;C:\ProgramData\Anaconda3;C:\ProgramData\Anaconda3\Library\mingw-w64\bin;C:\ProgramData\Anaconda3\Library\usr\bin;C:\ProgramData\Anaconda3\Library\bin;C:\ProgramData\Anaconda3\Scripts;D:\app\data\product\11.2.0\dbhome_2\bin;D:\app\data\product\11.2.0\dbhome_1\bin;D:\app\Seonglae\product\11.2.0\dbhome_1\bin;C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\ProgramData\chocolatey\bin;C:\Program Files\dotnet;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\MongoDB\Server\4.2\bin;C:\Program Files (x86)\Subversion\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\PuTTY;C:\Users\Seonglae\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm;C:\Go\bin;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Program Files\WireGuard;C:\Program Files\NVIDIA Corporation\Nsight Compute 2020.2.1;C:\Program Files (x86)\Google\Cloud SDK\google-cloud-sdk\bin;C:\Users\Seonglae\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Users\Seonglae\.windows-build-tools\python27;C:\Users\Seonglae\.cargo\bin;C:\Users\Seonglae\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Bandizip;C:\Users\Seonglae\AppData\Local\hyper\app-3.0.2\resources\bin;C:\Users\Seonglae\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Mercurial;C:\Users\Seonglae\AppData\Local\GitHubDesktop\bin;C:\Users\Seonglae\AppData\Local\Programs\Azure Data Studio\bin;C:\Program Files\MongoDB\Server\4.2\bin;C:\Users\Seonglae\AppData\Local\Microsoft\WindowsApps;C:\Users\Seonglae\AppData\Local\Programs\Microsoft VS Code Exploration\bin;C:\Users\Seonglae\go\bin;C:\Users\Seonglae\AppData\Local\Programs\Microsoft VS Code Insiders\bin;C:\Users\Seonglae\AppData\Roaming\npm;C:\Users\Seonglae\AppData\Local\Yarn\bin;C:\Program Files\IPFS Desktop\resources\app.asar.unpacked\src\ipfs-on-path\scripts\bin-win;C:\Program Files\git\usr\bin\vendor_perl;C:\Program Files\git\usr\bin\core_perl;C;C:\ProgramData\fossa-cli
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  14.16.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: canceled
+      at Interface.<anonymous> (C:\Users\Seonglae\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:136216:13)
+      at Interface.emit (events.js:315:20)
+      at Interface._ttyWrite (readline.js:875:16)
+      at ReadStream.onkeypress (readline.js:213:10)
+      at ReadStream.emit (events.js:315:20)
+      at emitKeys (internal/readline/utils.js:345:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (readline.js:1144:36)
+      at ReadStream.emit (events.js:315:20)
+      at addChunk (internal/streams/readable.js:309:12)
+
+npm manifest: 
+  {
+    "name": "worker",
+    "version": "1.0.0",
+    "license": "MIT",
+    "description": "A template for kick starting a Cloudflare Workers project",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "format": "prettier --write '**/*.{js,css,json,md}'",
+      "publish": "wrangler publish"
+    },
+    "author": "seonglae <sungle3737@gmail.com>",
+    "devDependencies": {
+      "prettier": "^1.18.2"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

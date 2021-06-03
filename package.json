@@ -1,5 +1,4 @@
 {
-  "private": true,
   "name": "worker",
   "version": "1.0.0",
   "license": "MIT",
@@ -7,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --write '**/*.{js,css,json,md}'"
+    "format": "prettier --write '**/*.{js,css,json,md}'",
+    "release": "wrangler publish"
   },
   "author": "seonglae <sungle3737@gmail.com>",
   "devDependencies": {
