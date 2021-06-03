@@ -31,4 +31,5 @@ jobs:
         uses: cloudflare/wrangler-action@1.3.0
         with:
           apiKey: ${{ secrets.CF_API_KEY }}
+          email: sungle3737@gmail.com
           environment: 'production'
