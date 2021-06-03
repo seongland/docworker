@@ -1,4 +1,4 @@
 account_id = ""
 name = "worker"
-route = "https://doc.seonglae.com/*"
+route = "https://doc.seongland.com/*"
 type = "javascript"
