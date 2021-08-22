@@ -1,4 +1,5 @@
 /* CONFIGURATION STARTS HERE */
+type Matcher = { [slug: string]: string }
 
 /* Step 1: Domain name */
 const MY_DOMAIN = 'doc.seongland.com'
@@ -8,7 +9,7 @@ const MY_DOMAIN = 'doc.seongland.com'
  * The key on the left is the slug (without the slash)
  * The value on the right is the Notion page ID
  */
-const SLUG_TO_PAGE = {
+const SLUG_TO_PAGE: Matcher = {
   '': '04089c8ae3534bf79512fc495944b321',
   logic: 'e562053ace984677a72cb9eaf5c6f91e',
   portfolio: 'b418523753984d4e8c940ede2e3de680',
@@ -23,7 +24,7 @@ const SLUG_TO_PAGE = {
   'visual-design': '9338a889bc2845948faae416a0772bf0',
   'sound-design': 'da010ab49f0b459eaa670d33b730277e',
   'notion-cloudflare': 'aeb0f8e85c3e49c18b4c3320254305a7',
-  testament: '39788903601a40fab6b2ff3f4bc42518'
+  testament: '39788903601a40fab6b2ff3f4bc42518',
 }
 
 /* Step 2.5: undefined - auto, false is white */
@@ -55,9 +56,9 @@ const CUSTOM_SCRIPT = `
 
 /* CONFIGURATION ENDS HERE */
 
-const PAGE_TO_SLUG = {}
-const slugs = []
-const pages = []
+const PAGE_TO_SLUG: Matcher = {}
+const slugs: string[] = []
+const pages: string[] = []
 Object.keys(SLUG_TO_PAGE).forEach((slug) => {
   const page = SLUG_TO_PAGE[slug]
   slugs.push(slug)
@@ -74,7 +75,7 @@ function generateSitemap() {
   slugs.forEach(
     (slug) =>
       (sitemap +=
-        '<url><loc>https://' + MY_DOMAIN + '/' + slug + '</loc></url>')
+        '<url><loc>https://' + MY_DOMAIN + '/' + slug + '</loc></url>'),
   )
   sitemap += '</urlset>'
   return sitemap
@@ -83,10 +84,10 @@ function generateSitemap() {
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'GET, HEAD, POST, PUT, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type'
+  'Access-Control-Allow-Headers': 'Content-Type',
 }
 
-function handleOptions(request) {
+function handleOptions(request: Request) {
   if (
     request.headers.get('Origin') !== null &&
     request.headers.get('Access-Control-Request-Method') !== null &&
@@ -94,19 +95,19 @@ function handleOptions(request) {
   ) {
     // Handle CORS pre-flight request.
     return new Response(null, {
-      headers: corsHeaders
+      headers: corsHeaders,
     })
   } else {
     // Handle standard OPTIONS request.
     return new Response(null, {
       headers: {
-        Allow: 'GET, HEAD, POST, PUT, OPTIONS'
-      }
+        Allow: 'GET, HEAD, POST, PUT, OPTIONS',
+      },
     })
   }
 }
 
-async function fetchAndApply(request) {
+async function fetchAndApply(request: Request) {
   if (request.method === 'OPTIONS') {
     return handleOptions(request)
   }
@@ -127,7 +128,7 @@ async function fetchAndApply(request) {
       body
         .replace(/www.notion.so/g, MY_DOMAIN)
         .replace(/notion.so/g, MY_DOMAIN),
-      response
+      response,
     )
     response.headers.set('Content-Type', 'application/x-javascript')
     return response
@@ -138,9 +139,9 @@ async function fetchAndApply(request) {
       headers: {
         'content-type': 'application/json;charset=UTF-8',
         'user-agent':
-          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36'
+          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36',
       },
-      method: 'POST'
+      method: 'POST',
     })
     response = new Response(response.body, response)
     response.headers.set('Access-Control-Allow-Origin', '*')
@@ -151,8 +152,8 @@ async function fetchAndApply(request) {
   } else {
     response = await fetch(url.toString(), {
       body: request.body,
-      headers: request.header,
-      method: request.method
+      headers: request.headers,
+      method: request.method,
     })
     response = new Response(response.body, response)
     response.headers.delete('Content-Security-Policy')
@@ -164,23 +165,20 @@ async function fetchAndApply(request) {
 }
 
 class MetaRewriter {
-  element(element) {
-    if (PAGE_TITLE !== '') {
-      if (
-        element.getAttribute('property') === 'og:title' ||
-        element.getAttribute('name') === 'twitter:title'
-      )
-        element.setAttribute('content', PAGE_TITLE)
-      if (element.tagName === 'title') element.setInnerContent(PAGE_TITLE)
-    }
-    if (PAGE_DESCRIPTION !== '') {
-      if (
-        element.getAttribute('name') === 'description' ||
-        element.getAttribute('property') === 'og:description' ||
-        element.getAttribute('name') === 'twitter:description'
-      )
-        element.setAttribute('content', PAGE_DESCRIPTION)
-    }
+  element(element: HTMLElement) {
+    if (
+      element.getAttribute('property') === 'og:title' ||
+      element.getAttribute('name') === 'twitter:title'
+    )
+      element.setAttribute('content', PAGE_TITLE)
+    if (element.tagName === 'title') element.setInnerContent(PAGE_TITLE)
+    if (
+      element.getAttribute('name') === 'description' ||
+      element.getAttribute('property') === 'og:description' ||
+      element.getAttribute('name') === 'twitter:description'
+    )
+      element.setAttribute('content', PAGE_DESCRIPTION)
+
     if (
       element.getAttribute('property') === 'og:url' ||
       element.getAttribute('name') === 'twitter:url'
@@ -191,18 +189,17 @@ class MetaRewriter {
 }
 
 class HeadRewriter {
-  element(element) {
-    if (GOOGLE_FONT !== '')
-      element.append(
-        `<link href='https://fonts.googleapis.com/css?family=${GOOGLE_FONT.replace(
-          ' ',
-          '+'
-        )}:Regular,Bold,Italic&display=swap' rel='stylesheet'>
+  element(element: HTMLElement) {
+    element.append(
+      `<link href='https://fonts.googleapis.com/css?family=${GOOGLE_FONT.replace(
+        ' ',
+        '+',
+      )}:Regular,Bold,Italic&display=swap' rel='stylesheet'>
         <style>* { font-family: "${GOOGLE_FONT}" !important; }</style>`,
-        {
-          html: true
-        }
-      )
+      {
+        html: true,
+      },
+    )
     element.append(
       `<style>
       div.notion-topbar > div > div:nth-child(4) { font-size: 0 !important; }
@@ -214,18 +211,20 @@ class HeadRewriter {
       div.notion-topbar-mobile > div:nth-child(1n).toggle-mode { display: block !important; }
       </style>`,
       {
-        html: true
-      }
+        html: true,
+      },
     )
   }
 }
 
 class BodyRewriter {
-  constructor(SLUG_TO_PAGE, DEFAULT_DARK) {
+  SLUG_TO_PAGE: Matcher
+  DEFAULT_DARK: boolean
+  constructor(SLUG_TO_PAGE: Matcher, DEFAULT_DARK: boolean) {
     this.SLUG_TO_PAGE = SLUG_TO_PAGE
     this.DEFAULT_DARK = DEFAULT_DARK
   }
-  element(element) {
+  element(element: HTMLElement) {
     element.append(
       `<script>
       const SLUG_TO_PAGE = ${JSON.stringify(this.SLUG_TO_PAGE)};
@@ -338,13 +337,17 @@ class BodyRewriter {
       };
     </script>${CUSTOM_SCRIPT}`,
       {
-        html: true
-      }
+        html: true,
+      },
     )
   }
 }
 
-async function appendJavascript(res, SLUG_TO_PAGE, DEFAULT_DARK) {
+async function appendJavascript(
+  res: Response,
+  SLUG_TO_PAGE: Matcher,
+  DEFAULT_DARK: boolean,
+) {
   return new HTMLRewriter()
     .on('title', new MetaRewriter())
     .on('meta', new MetaRewriter())
