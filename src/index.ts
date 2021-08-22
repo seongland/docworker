@@ -108,9 +108,7 @@ function handleOptions(request: Request) {
 }
 
 async function fetchAndApply(request: Request) {
-  if (request.method === 'OPTIONS') {
-    return handleOptions(request)
-  }
+  if (request.method === 'OPTIONS') return handleOptions(request)
   let url = new URL(request.url)
   url.hostname = 'www.notion.so'
   if (url.pathname === '/robots.txt')
@@ -135,7 +133,9 @@ async function fetchAndApply(request: Request) {
   } else if (url.pathname.startsWith('/api')) {
     // Forward API
     response = await fetch(url.toString(), {
-      body: request.body,
+      body: url.pathname.startsWith('/api/v3/getPublicPageData')
+        ? null
+        : request.body,
       headers: {
         'content-type': 'application/json;charset=UTF-8',
         'user-agent':
@@ -151,7 +151,9 @@ async function fetchAndApply(request: Request) {
     return Response.redirect('https://' + MY_DOMAIN + '/' + pageId, 301)
   } else {
     response = await fetch(url.toString(), {
-      body: request.body,
+      body: url.pathname.startsWith('/api/v3/getPublicPageData')
+        ? null
+        : request.body,
       headers: request.headers,
       method: request.method,
     })
