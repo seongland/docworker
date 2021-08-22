@@ -229,6 +229,7 @@ class BodyRewriter {
   element(element: HTMLElement) {
     element.append(
       `<script>
+      window.CONFIG.domainBaseUrl = 'https://${MY_DOMAIN}';
       const SLUG_TO_PAGE = ${JSON.stringify(this.SLUG_TO_PAGE)};
       const DEFAULT_DARK = ${JSON.stringify(this.DEFAULT_DARK)};
       const PAGE_TO_SLUG = {};
