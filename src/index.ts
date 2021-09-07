@@ -25,6 +25,7 @@ const SLUG_TO_PAGE: Matcher = {
   'sound-design': 'da010ab49f0b459eaa670d33b730277e',
   'notion-cloudflare': 'aeb0f8e85c3e49c18b4c3320254305a7',
   testament: '39788903601a40fab6b2ff3f4bc42518',
+  present: 'b709a5422126605a7ae7dfc3e6237505',
 }
 
 /* Step 2.5: undefined - auto, false is white */
