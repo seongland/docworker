@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@cloudflare/workers-types': ^2.2.2
+  '@cloudflare/workers-types': ^3.4.0
   '@types/service-worker-mock': ^2.0.1
   '@typescript-eslint/eslint-plugin': ^4.33.0
   '@typescript-eslint/parser': ^4.33.0
@@ -16,7 +16,7 @@ specifiers:
   webpack-cli: ^4.9.2
 
 devDependencies:
-  '@cloudflare/workers-types': 2.2.2
+  '@cloudflare/workers-types': 3.4.0
   '@types/service-worker-mock': 2.0.1
   '@typescript-eslint/eslint-plugin': 4.33.0_65e88d2733f36d3624b406e590cf0b3b
   '@typescript-eslint/parser': 4.33.0_eslint@7.32.0+typescript@4.6.2
@@ -52,8 +52,8 @@ packages:
       js-tokens: 4.0.0
     dev: true
 
-  /@cloudflare/workers-types/2.2.2:
-    resolution: {integrity: sha512-kaMn2rueJ0PL1TYVGknTCh0X0x0d9G+FNXAFep7/4uqecEZoQb/63o6rOmMuiqI09zLuHV6xhKRXinokV/MY9A==}
+  /@cloudflare/workers-types/3.4.0:
+    resolution: {integrity: sha512-i/3czUrt6YqbOWl44OtIqd0cSZvEVXp/1oD/DZylC4PHZL3q/BhbamdEVeVhc/HPk4iD/7MZ2HGaIMO4Z4b12A==}
     dev: true
 
   /@discoveryjs/json-ext/0.5.3:
